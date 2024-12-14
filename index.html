@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="shortcut icon"
+      href="./img/favicon.81c7a1ce.svg"
+      type="image/x-icon"
+    />
+    <title>Aulão 21º JavaScript</title>
+  </head>
+  <body>
+    <main>
+      <section class="todo-list">
+        <h2>Lista de Tarefas</h2>
+        <div class="btn-group">
+          <button id="set-today">Tarefas de hoje</button>
+          <button id="set-completed">Concluídas</button>
+          <button id="set-todo">Há fazer</button>
+        </div>
+        <ul class="list"> <!--remover o código daqui para o JS criar-->
+          <li>
+            <input class="checkbox" type="checkbox" name="" id="">
+            <div class="task">
+              <label>Fazer as tarefas atrasadas de javaScript</label>
+              <span>2024-12-12</span>
+            </div>
+            <div class="delete">
+              <img src="./img/trash-bold.svg" alt="">
+            </div>
+          </li>
+          <li>
+            <input class="checkbox" type="checkbox" name="" id="">
+            <div class="task">
+              <label>Teste</label>
+              <span>2024-12-12</span>
+            </div>
+            <div class="delete">
+              <img src="./img/trash-bold.svg" alt="">
+            </div>
+          </li>
+        </ul> <!--remover o código daqui para o JS criar-->
+      </section>
+      <section class="todo-manager">
+        <form action="">
+          <div class="input-group">
+            <input class="input" type="text" name="task" required/>
+            <label class="input-label" for="task">Tarefa:</label>
+          </div>
+          <div class="input-group">
+            <input class="input" type="date" name="task-date" required/>
+            <label class="input-label-date" for="task-date">Data:</label>
+          </div>
+          <div class="btn-group"><button>Adicionar</button></div>
+        </form>
+      </section>
+    </main>
+    <script src="index.js"></script>
+  </body>
+</html>
