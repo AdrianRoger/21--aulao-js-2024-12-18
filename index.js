@@ -29,6 +29,13 @@ const createTaskListItem = (task) => {
       </div>
       `;
 
+  const deleteBtn = taskElement.querySelector(".delete");
+  deleteBtn.addEventListener("click", () => {
+    if (confirm(`Deseja apagar a tarefa "${task.title}"? \nEsta ação é irreversível!`)) {
+      removeTaskById(task.id);
+    }
+  });
+
   return taskElement;
 };
 
@@ -72,6 +79,12 @@ const handleNewTaskSubmission = (e) => {
   e.target.reset();
 
   renderTaskList(); // Update task list on List
+};
+
+const removeTaskById = (id) => {
+  taskList = taskList.filter((task) => task.id !== id);
+  console.log(`Tarefa com ID ${id} removida!`);
+  renderTaskList();
 };
 
 // Event to show initial data when DOM content loaded
