@@ -13,29 +13,6 @@ let taskList = [
   },
 ];
 
-const addNewTaskToList = (task) => {
-  const newTask = {
-    id: Date.now(),
-    title: task.task,
-    completed: false,
-    taskDate: task["task-date"],
-  };
-  taskList.push(newTask);
-  console.log(`Tarefa "${newTask.title}" adicionada com ID ${newTask.id}!`);
-};
-
-const handleNewTaskSubmission = (e) => {
-  e.preventDefault();
-
-  const formData = new FormData(e.target);
-  const taskFormData = Object.fromEntries(formData.entries());
-  addNewTaskToList(taskFormData); // Create a new task from form data
-
-  e.target.reset();
-
-  renderTaskList(); // Update task list on List
-};
-
 // Render only one task
 const createTaskListItem = (task) => {
   const taskElement = document.createElement("li");
@@ -72,6 +49,29 @@ const renderTaskList = (filteredOrCustomTaskList) => {
   taskListToRender.map((task) => {
     taskListContainer.appendChild(createTaskListItem(task));
   });
+};
+
+const addNewTaskToList = (task) => {
+  const newTask = {
+    id: Date.now(),
+    title: task.task,
+    completed: false,
+    taskDate: task["task-date"],
+  };
+  taskList.push(newTask);
+  console.log(`Tarefa "${newTask.title}" adicionada com ID ${newTask.id}!`);
+};
+
+const handleNewTaskSubmission = (e) => {
+  e.preventDefault();
+
+  const formData = new FormData(e.target);
+  const taskFormData = Object.fromEntries(formData.entries());
+  addNewTaskToList(taskFormData); // Create a new task from form data
+
+  e.target.reset();
+
+  renderTaskList(); // Update task list on List
 };
 
 // Event to show initial data when DOM content loaded
