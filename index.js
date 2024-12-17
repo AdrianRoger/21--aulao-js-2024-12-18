@@ -36,6 +36,11 @@ const createTaskListItem = (task) => {
     }
   });
 
+  const checkbox = taskElement.querySelector(".checkbox");
+  checkbox.addEventListener("change", () => {
+    toggleTaskCompletionById(task.id);
+  });
+
   return taskElement;
 };
 
@@ -85,6 +90,13 @@ const removeTaskById = (id) => {
   taskList = taskList.filter((task) => task.id !== id);
   console.log(`Tarefa com ID ${id} removida!`);
   renderTaskList();
+};
+
+const toggleTaskCompletionById = (id) => {
+  taskList = taskList.map((task) =>
+    task.id === id ? { ...task, completed: !task.completed } : task
+  );
+  console.log(`Status da tarefa com ID ${id} alterada!`);
 };
 
 // Event to show initial data when DOM content loaded
