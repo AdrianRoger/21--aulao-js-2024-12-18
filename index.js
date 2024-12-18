@@ -32,7 +32,11 @@ const createTaskListItem = (task) => {
 
   const deleteBtn = taskElement.querySelector(".delete");
   deleteBtn.addEventListener("click", () => {
-    if (confirm(`Deseja apagar a tarefa "${task.title}"? \nEsta ação é irreversível!`)) {
+    if (
+      confirm(
+        `Deseja apagar a tarefa "${task.title}"? \nEsta ação é irreversível!`
+      )
+    ) {
       removeTaskById(task.id);
     }
   });
@@ -60,7 +64,9 @@ const renderTaskList = (filteredOrCustomTaskList) => {
   }
 
   taskListToRender.map((task) => {
-    taskListContainer.appendChild(createTaskListItem(task));
+    if (task && task.id !== undefined) {
+      taskListContainer.appendChild(createTaskListItem(task));
+    }
   });
 };
 
@@ -120,6 +126,15 @@ const filterTasksByToday = () => {
   const formattedToday = getFormattedCurrentDate();
   const filtered = taskList.filter((task) => task.taskDate === formattedToday);
   renderTaskList(filtered);
+};
+
+/* find */
+const findTaskById = (e) => {
+  const foundTask = taskList.find((task) =>
+    task.id.toString().includes(e.target.value.trim())
+  );
+
+  foundTask !== -1 ? renderTaskList([foundTask]) : renderTaskList([]);
 };
 
 /* auxiliary function */
