@@ -99,5 +99,10 @@ const toggleTaskCompletionById = (id) => {
   console.log(`Status da tarefa com ID ${id} alterada!`);
 };
 
+const filterTasksByCompletionStatus = (completed = false) => {
+    const filtered = taskList.filter((task) => task.completed === completed);
+    renderTaskList(filtered);
+  };
+
 // Event to show initial data when DOM content loaded
 document.addEventListener("DOMContentLoaded", renderTaskList);
