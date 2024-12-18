@@ -146,5 +146,10 @@ const getFormattedCurrentDate = () => {
   return `${year}-${month}-${day}`;
 };
 
+/** Order (sort) */
+const renderTasksOrderedByCompletion = () => {
+  renderTaskList([...taskList].sort((a, b) => a.completed - b.completed));
+};
+
 // Event to show initial data when DOM content loaded
 document.addEventListener("DOMContentLoaded", renderTaskList);
