@@ -146,6 +146,20 @@ const getFormattedCurrentDate = () => {
   return `${year}-${month}-${day}`;
 };
 
+/* Statistic function */
+const showStatisticLog = () => {
+  const statistic = taskList.reduce(
+    (acc, task) => {
+      if (task.completed) acc.done++;
+      else acc.todo++;
+      return acc;
+    },
+    { done: 0, todo: 0 }
+  );
+
+  console.log(`Estatísticas: \n   A fazer: ${statistic.todo} \n   Feitas: ${statistic.done}`);
+};
+
 /** Order (sort) */
 const renderTasksOrderedByCompletion = () => {
   renderTaskList([...taskList].sort((a, b) => a.completed - b.completed));
