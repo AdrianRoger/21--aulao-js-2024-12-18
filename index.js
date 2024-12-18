@@ -13,6 +13,7 @@ let taskList = [
   },
 ];
 
+/* DOM manipulation functions */
 // Render only one task
 const createTaskListItem = (task) => {
   const taskElement = document.createElement("li");
@@ -63,6 +64,7 @@ const renderTaskList = (filteredOrCustomTaskList) => {
   });
 };
 
+/* CRUD functions */
 const addNewTaskToList = (task) => {
   const newTask = {
     id: Date.now(),
@@ -99,6 +101,7 @@ const toggleTaskCompletionById = (id) => {
   console.log(`Status da tarefa com ID ${id} alterada!`);
 };
 
+/* filters */
 const filterTasksByTitleSubstring = (e) => {
   const filtered = taskList.filter((task) =>
     task.title
@@ -119,6 +122,7 @@ const filterTasksByToday = () => {
   renderTaskList(filtered);
 };
 
+/* auxiliary function */
 const getFormattedCurrentDate = () => {
   const formattedToday = new Date();
   const year = formattedToday.getFullYear();
