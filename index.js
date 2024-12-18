@@ -100,9 +100,23 @@ const toggleTaskCompletionById = (id) => {
 };
 
 const filterTasksByCompletionStatus = (completed = false) => {
-    const filtered = taskList.filter((task) => task.completed === completed);
-    renderTaskList(filtered);
-  };
+  const filtered = taskList.filter((task) => task.completed === completed);
+  renderTaskList(filtered);
+};
+
+const filterTasksByToday = () => {
+  const formattedToday = getFormattedCurrentDate();
+  const filtered = taskList.filter((task) => task.taskDate === formattedToday);
+  renderTaskList(filtered);
+};
+
+const getFormattedCurrentDate = () => {
+  const formattedToday = new Date();
+  const year = formattedToday.getFullYear();
+  const month = String(formattedToday.getMonth() + 1).padStart(2, "0");
+  const day = String(formattedToday.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+};
 
 // Event to show initial data when DOM content loaded
 document.addEventListener("DOMContentLoaded", renderTaskList);
