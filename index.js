@@ -63,7 +63,7 @@ const renderTaskList = (filteredOrCustomTaskList) => {
     return;
   }
 
-  taskListToRender.map((task) => {
+  taskListToRender.forEach((task) => {
     if (task && task.id !== undefined) {
       taskListContainer.appendChild(createTaskListItem(task));
     }
