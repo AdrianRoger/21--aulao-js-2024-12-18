@@ -99,6 +99,15 @@ const toggleTaskCompletionById = (id) => {
   console.log(`Status da tarefa com ID ${id} alterada!`);
 };
 
+const filterTasksByTitleSubstring = (e) => {
+  const filtered = taskList.filter((task) =>
+    task.title
+      .toLocaleLowerCase("pt-BR")
+      .includes(e.target.value.trim().toLocaleLowerCase("pt-BR"))
+  );
+  renderTaskList(filtered);
+};
+
 const filterTasksByCompletionStatus = (completed = false) => {
   const filtered = taskList.filter((task) => task.completed === completed);
   renderTaskList(filtered);
